@@ -34,7 +34,7 @@ import _pickle as cPickle
 similarity = cPickle.load(bz2.BZ2File('similarity.pbz2', 'rb'))
 
 
-st.title('CinemaGuide')
+# st.title('CinemaGuide')
 
 
 page_bg_img = """
@@ -43,8 +43,28 @@ page_bg_img = """
 
 
 [data-testid="stAppViewContainer"] {
-background-image: url("https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg?w=996&t=st=1685013223~exp=1685013823~hmac=abf1b0c04934aad023a83a318fee63b6fc0d33f3c4183d5c8f532384b5c63074");
+background-image: url("https://drive.google.com/uc?id=1f0EfMNxWi7yoZEGsKEcWn4JZTdo131mc");
 background-size: cover;
+olor: white;
+
+}
+
+.title {
+    color: #ADD8E6;
+    font-size: 118px;
+    text-align: center;
+    margin-bottom: 50px;
+    
+}
+
+.header {
+    margin-bottom: 50em;
+    color: #CCCCFF;
+    # color: #6495ED;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: -15em;
 }
 
 </style>
@@ -52,29 +72,77 @@ background-size: cover;
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+st.markdown('<p class="title" style="font-weight: bold;">CinemaGuide</p>', unsafe_allow_html=True)
 
-select_movie = st.selectbox('Find Your Perfect Film:',
-movies_['title'].values)
+# st.markdown('<p class="title">CinemaGuide</p>', unsafe_allow_html=True)
 
 
-if st.button('Find Recommendations'):
-    names, posters =  recommend(select_movie)
 
-    col1, col2, col3, col4, col5 = st.columns(5)
-    with col1:
-        st.text(names[0])
-        st.image(posters[0])
-    with col2:
-        st.text(names[1])
-        st.image(posters[1])
+# select_movie = st.selectbox('Find Your Perfect Film:', movies_['title'].values)
 
-    with col3:
-        st.text(names[2])
-        st.image(posters[2])
-    with col4:
-        st.text(names[3])
-        st.image(posters[3])
-    with col5:
-        st.text(names[4])
-        st.image(posters[4])
+st.markdown('<p class="header">Find your perfect film! </p>', unsafe_allow_html=True)
 
+select_movie = st.selectbox('',movies_['title'].values)
+
+
+if st.markdown(
+    """
+    <style>
+    .my-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5vh;
+        margin-bottom: 2em;
+    }
+
+    .my-button {
+        padding: 10px 40px;
+        background-color: #800000;
+        color: #F5F5DC;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .movie-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 2em;
+        margin-top: 1em;
+    }
+
+    .movie-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .movie-title {
+        margin-top: 0.3em;
+        margin-bottom: 2.5em;
+        font-weight: bold;
+    }
+    </style>
+    <div class="my-button-container">
+        <div class="my-button">Discover Movies</div>
+    </div>
+    """,
+    unsafe_allow_html=True
+):
+    names, posters = recommend(select_movie)
+
+    st.markdown('<div class="movie-container">', unsafe_allow_html=True)
+    for name, poster in zip(names, posters):
+        st.markdown(
+            """
+            <div class="movie-card">
+                <img src="{}" width="150">
+                <p class="movie-title">{}</p>
+            </div>
+            """.format(poster, name),
+            unsafe_allow_html=True
+        )
+    st.markdown('</div>', unsafe_allow_html=True)
