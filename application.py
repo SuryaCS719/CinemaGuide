@@ -2,10 +2,15 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+
+
 def fetch_poster(movie_id):
-    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US'.format(movie_id))
+    response = requests.get(
+        'https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US'.format(
+            movie_id))
     data = response.json()
     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+
 
 def recommend(movie):
     movie_index = movies_[movies_['title'] == movie].index[0]
@@ -24,15 +29,14 @@ def recommend(movie):
     return recommended_movies, recommended_movies_posters
 
 
-
 movie_dict = pickle.load(open('movie_dict.pkl', 'rb'))
 movies_ = pd.DataFrame(movie_dict)
 
 # similarity = pickle.load(open('similarity.pkl', 'rb'))
 import bz2
 import _pickle as cPickle
-similarity = cPickle.load(bz2.BZ2File('similarity.pbz2', 'rb'))
 
+similarity = cPickle.load(bz2.BZ2File('similarity.pbz2', 'rb'))
 
 # st.title('CinemaGuide')
 
@@ -54,7 +58,7 @@ olor: white;
     font-size: 118px;
     text-align: center;
     margin-bottom: 50px;
-    
+
 }
 
 .header {
@@ -77,72 +81,76 @@ st.markdown('<p class="title" style="font-weight: bold;">CinemaGuide</p>', unsaf
 # st.markdown('<p class="title">CinemaGuide</p>', unsafe_allow_html=True)
 
 
-
 # select_movie = st.selectbox('Find Your Perfect Film:', movies_['title'].values)
 
 st.markdown('<p class="header">Find your perfect film! </p>', unsafe_allow_html=True)
 
-select_movie = st.selectbox('',movies_['title'].values)
+select_movie = st.selectbox('', movies_['title'].values)
 
-
-if st.markdown(
-    """
+button_style = '''
     <style>
-    .my-button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 5vh;
-        margin-bottom: 2em;
-    }
-
-    .my-button {
-        padding: 10px 40px;
+    .stButton button {
         background-color: #800000;
         color: #F5F5DC;
-        font-weight: bold;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding: 10px 25px;
         border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    .movie-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 2em;
-        margin-top: 1em;
-    }
-
-    .movie-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .movie-title {
-        margin-top: 0.3em;
-        margin-bottom: 2.5em;
+        cursor: default;
         font-weight: bold;
+        font-style: italic;
     }
     </style>
-    <div class="my-button-container">
-        <div class="my-button">Discover Movies</div>
-    </div>
-    """,
-    unsafe_allow_html=True
-):
-    names, posters = recommend(select_movie)
+'''
 
-    st.markdown('<div class="movie-container">', unsafe_allow_html=True)
-    for name, poster in zip(names, posters):
-        st.markdown(
+st.markdown(button_style, unsafe_allow_html=True)
+
+if st.button('Discover Movies'):
+
+    if st.markdown(
             """
-            <div class="movie-card">
-                <img src="{}" width="150">
-                <p class="movie-title">{}</p>
-            </div>
-            """.format(poster, name),
+            <style>
+
+            .movie-container {
+                display: flex;
+                overflow-x: auto;
+                gap: 2em;
+                margin-top: 1em;
+            }
+
+            .movie-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .movie-title {
+                margin-top: 0.3em;
+                margin-bottom: 2.5em;
+                font-weight: bold;
+            }
+            </style>
+
+            """,
             unsafe_allow_html=True
-        )
-    st.markdown('</div>', unsafe_allow_html=True)
+    ):
+        names, posters = recommend(select_movie)
+
+        st.markdown('<div class="movie-container">', unsafe_allow_html=True)
+        for name, poster in zip(names, posters):
+            st.markdown(
+                """
+                <div class="movie-card">
+                    <img src="{}" width="150">
+                    <p class="movie-title">{}</p>
+                </div>
+                """.format(poster, name),
+                unsafe_allow_html=True
+            )
+        st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+
