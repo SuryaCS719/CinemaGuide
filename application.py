@@ -36,6 +36,23 @@ similarity = cPickle.load(bz2.BZ2File('similarity.pbz2', 'rb'))
 
 st.title('CinemaGuide')
 
+
+page_bg_img = """
+<style>
+
+
+
+[data-testid="stAppViewContainer"] {
+background-image: url("https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg?w=996&t=st=1685013223~exp=1685013823~hmac=abf1b0c04934aad023a83a318fee63b6fc0d33f3c4183d5c8f532384b5c63074");
+background-size: cover;
+}
+
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
 select_movie = st.selectbox('Find Your Perfect Film:',
 movies_['title'].values)
 
