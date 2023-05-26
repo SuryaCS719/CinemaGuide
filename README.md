@@ -6,10 +6,20 @@ CinemaGuide is a movie recommendation system using machine learning.
 
 This project utilizes Python and machine learning techniques to recommend movies based on user preferences. It uses content-based filtering to suggest similar movies based on a selected movie.
 
+## Deployment
+
+The project has been deployed using Streamlit and is accessible at the following link:
+
+[CinemaGuide - Movie Recommendation System](https://cinemaguide-suryacs719.streamlit.app/)
+
+
+Please visit the provided link to explore the working of the project's application.
+
 ### Installation
 
-1. Clone the repository:
-git clone `https://github.com/SuryaCS719/CineGuide.git`
+1. Clone the repository by running the following command in your terminal:
+https://github.com/SuryaCS719/CinemaGuide.git
+
 2. Install the required dependencies:
 `pip install -r requirements.txt`
 3. Make sure you have the following libraries installed:
