@@ -12,7 +12,11 @@ This project utilizes Python and machine learning techniques to recommend movies
 git clone https://github.com/SuryaCS719/CineGuide.git
 2. Install the required dependencies:
 pip install -r requirements.txt
-3. Run the application:
+3. Make sure you have the following libraries installed:
++ Streamlit
++ Pandas
++ Requests
+4. Run the application:
 streamlit run application.py
 
 ### Usage
