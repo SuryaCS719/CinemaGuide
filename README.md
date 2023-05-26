@@ -16,19 +16,19 @@ pip install -r requirements.txt
 streamlit run application.py
 
 ### Usage
-Select a movie from the list of available movies.
-Click on the "Discover Movies" button to find similar movies.
-The recommended movies will be displayed with their titles and posters.
++ Select a movie from the list of available movies.
++ Click on the "Discover Movies" button to find similar movies.
++ The recommended movies will be displayed with their titles and posters.
 
 ### Features
-Movie recommendation based on selected movie.
-Displays movie posters and titles of recommended movies.
-User-friendly interface with a selection box and button.
++ Movie recommendation based on selected movie.
++ Displays movie posters and titles of recommended movies.
++ User-friendly interface with a selection box and button.
 
 ### Contributing
-Surya (Project Lead, Phoenix Global)
-Sai Kiran (Team Member, Phoenix Global)
-Project oversight by Mr. Umesh (Mentor, Phoenix Global)
++ Surya (Project Lead, Phoenix Global)
++ Sai Kiran (Team Member, Phoenix Global)
++ Project oversight by Mr. Umesh (Mentor, Phoenix Global)
 
 Note: At this moment, there are no other contributions.
 
