@@ -13,11 +13,11 @@ git clone https://github.com/SuryaCS719/CineGuide.git
 2. Install the required dependencies:
 pip install -r requirements.txt
 3. Make sure you have the following libraries installed:
-+ Streamlit
-+ Pandas
-+ Requests
+    + Streamlit
+    + Pandas
+    + Requests
 4. Run the application:
-streamlit run application.py
+`streamlit run application.py`
 
 ### Usage
 + Select a movie from the list of available movies.
