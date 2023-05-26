@@ -28,7 +28,7 @@ streamlit run application.py
 ### Contributing
 + Surya (Project Lead, Phoenix Global)
 + Sai Kiran (Team Member, Phoenix Global)
-+ Project oversight by Mr. Umesh (Mentor, Phoenix Global)
++ Project supervision by Mr. Umesh (Mentor, Phoenix Global)
 
 Note: At this moment, there are no other contributions.
 
