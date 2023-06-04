@@ -1,1 +1,1 @@
-pip install IMDbPY
+pip install streamlit_option_menu
