@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
-
+from imdb import IMDb
 
 
 def fetch_poster(movie_id):
@@ -29,7 +29,7 @@ def recommend(movie):
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies, recommended_movies_posters
 
-from imdb import IMDb
+
 def get_imdb_info(movie_name):
     ia = IMDb()
     try:
