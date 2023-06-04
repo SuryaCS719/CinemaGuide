@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
-
+from imdb import IMDb
 
 def fetch_poster(movie_id):
     response = requests.get(
@@ -27,6 +27,24 @@ def recommend(movie):
         # Fetch poster from API
         recommended_movies_posters.append(fetch_poster(movie_id))
     return recommended_movies, recommended_movies_posters
+
+def get_imdb_info(movie_name):
+    ia = IMDb()
+    try:
+        # Search for the movie by name
+        results = ia.search_movie(movie_name)
+        if results:
+            movie = results[0]  # Get the first search result
+            imdb_id = movie.movieID
+            imdb_link = ia.get_imdbURL(movie)
+            return imdb_id, imdb_link
+        else:
+            print("No results found for the movie:", movie_name)
+            return None, None
+    except Exception as e:
+        print(f"Error fetching IMDb info: {str(e)}")
+        return None, None
+
 
 
 movie_dict = pickle.load(open('movie_dict.pkl', 'rb'))
@@ -185,15 +203,31 @@ if selected == "Home":
         ):
             names, posters = recommend(select_movie)
 
+            # st.markdown('<div class="movie-container">', unsafe_allow_html=True)
+            # for name, poster in zip(names, posters):
+            #     st.markdown(
+            #         """
+            #         <div class="movie-card">
+            #             <img src="{}" width="150">
+            #             <p class="movie-title">{}</p>
+            #         </div>
+            #         """.format(poster, name),
+            #         unsafe_allow_html=True
+            #     )
+            # st.markdown('</div>', unsafe_allow_html=True)
+
             st.markdown('<div class="movie-container">', unsafe_allow_html=True)
             for name, poster in zip(names, posters):
+                imdb_id, imdb_link = get_imdb_info(name)
                 st.markdown(
                     """
                     <div class="movie-card">
-                        <img src="{}" width="150">
-                        <p class="movie-title">{}</p>
+                        <a href="{}" target="_blank">
+                            <img src="{}" width="150">
+                            <p class="movie-title">{}</p>
+                        </a>
                     </div>
-                    """.format(poster, name),
+                    """.format(imdb_link, poster, name),
                     unsafe_allow_html=True
                 )
             st.markdown('</div>', unsafe_allow_html=True)
@@ -235,7 +269,6 @@ elif selected == "Contact":
 
 
     local_css("style/style.css")
-
 
 
 
