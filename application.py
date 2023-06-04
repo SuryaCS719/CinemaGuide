@@ -2,7 +2,8 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
-# from imdb import IMDb
+from imdb import IMDb
+
 
 def fetch_poster(movie_id):
     response = requests.get(
