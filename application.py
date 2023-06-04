@@ -38,119 +38,183 @@ import _pickle as cPickle
 
 similarity = cPickle.load(bz2.BZ2File('similarity.pbz2', 'rb'))
 
+
 # st.title('CinemaGuide')
 
 
-page_bg_img = """
-<style>
+def add_bg_from_url():
+    st.markdown(
+        f"""
+         <style>
+         .stApp {{
+             background-image: url("https://drive.google.com/uc?id=1f0EfMNxWi7yoZEGsKEcWn4JZTdo131mc");
+             background-size: cover;
+             color: white;
+         }}
+         </style>
+         """,
+        unsafe_allow_html=True
+    )
 
 
+add_bg_from_url()
 
-[data-testid="stAppViewContainer"] {
-background-image: url("https://drive.google.com/uc?id=1f0EfMNxWi7yoZEGsKEcWn4JZTdo131mc");
-background-size: cover;
-olor: white;
+from streamlit_option_menu import option_menu
 
-}
+with st.sidebar:
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "about", "Contact"],
+        icons=["house", "book", "envelope"],
+        menu_icon="cast",
+        default_index=0,
 
-.title {
-    color: #ADD8E6;
-    font-size: 118px;
-    text-align: center;
-    margin-bottom: 50px;
+        styles={
+            "container": {"padding": "0!important"},
+            "icon": {"color": "orange", "font-size": "25px"},
+            "nav-link": {
+                "font-size": "25px",
+                "text-align": "left",
+                "margin": "0px",
+                "--hover-color": "#eee",
+            },
+            "nav-link-selected": {"background-color": "green"},
+        },
+    )
 
-}
-
-.header {
-    margin-bottom: 50em;
-    color: #CCCCFF;
-    # color: #6495ED;
-    font-weight: bold;
-    font-size: 25px;
-    text-align: center;
-    margin-bottom: -15em;
-}
-
-</style>
-"""
-
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
-st.markdown('<p class="title" style="font-weight: bold;">CinemaGuide</p>', unsafe_allow_html=True)
-
-# st.markdown('<p class="title">CinemaGuide</p>', unsafe_allow_html=True)
-
-
-# select_movie = st.selectbox('Find Your Perfect Film:', movies_['title'].values)
-
-st.markdown('<p class="header">Find your perfect film! </p>', unsafe_allow_html=True)
-
-select_movie = st.selectbox('', movies_['title'].values)
-
-button_style = '''
+if selected == "Home":
+    page_bg_img = """
     <style>
-    .stButton button {
-        background-color: #800000;
-        color: #F5F5DC;
+
+
+
+
+
+    .title {
+        color: #ADD8E6;
+        font-size: 118px;
         text-align: center;
-        display: block;
-        margin: 0 auto;
-        padding: 10px 25px;
-        border-radius: 5px;
-        cursor: default;
-        font-weight: bold;
-        font-style: italic;
+        margin-bottom: 50px;
+
     }
+
+    .header {
+        margin-bottom: 50em;
+        color: #CCCCFF;
+        # color: #6495ED;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: -15em;
+    }
+
     </style>
-'''
+    """
 
-st.markdown(button_style, unsafe_allow_html=True)
+    st.markdown(page_bg_img, unsafe_allow_html=True)
 
-if st.button('Discover Movies'):
+    st.markdown('<p class="title" style="font-weight: bold;">CinemaGuide</p>', unsafe_allow_html=True)
 
-    if st.markdown(
-            """
-            <style>
+    # st.markdown('<p class="title">CinemaGuide</p>', unsafe_allow_html=True)
 
-            .movie-container {
-                display: flex;
-                overflow-x: auto;
-                gap: 2em;
-                margin-top: 1em;
-            }
+    # select_movie = st.selectbox('Find Your Perfect Film:', movies_['title'].values)
 
-            .movie-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+    st.markdown('<p class="header">Find your perfect film! </p>', unsafe_allow_html=True)
 
-            .movie-title {
-                margin-top: 0.3em;
-                margin-bottom: 2.5em;
-                font-weight: bold;
-            }
-            </style>
+    select_movie = st.selectbox('', movies_['title'].values)
 
-            """,
-            unsafe_allow_html=True
-    ):
-        names, posters = recommend(select_movie)
+    button_style = '''
+        <style>
+        .stButton button {
+            background-color: #800000;
+            color: #F5F5DC;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: default;
+            font-weight: bold;
+            font-style: italic;
+        }
+        </style>
+    '''
 
-        st.markdown('<div class="movie-container">', unsafe_allow_html=True)
-        for name, poster in zip(names, posters):
-            st.markdown(
+    st.markdown(button_style, unsafe_allow_html=True)
+
+    if st.button('Discover Movies'):
+
+        if st.markdown(
                 """
-                <div class="movie-card">
-                    <img src="{}" width="150">
-                    <p class="movie-title">{}</p>
-                </div>
-                """.format(poster, name),
+                <style>
+
+                .movie-container {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 2em;
+                    margin-top: 1em;
+                }
+
+                .movie-card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .movie-title {
+                    margin-top: 0.3em;
+                    margin-bottom: 2.5em;
+                    font-weight: bold;
+                }
+                </style>
+
+                """,
                 unsafe_allow_html=True
-            )
-        st.markdown('</div>', unsafe_allow_html=True)
+        ):
+            names, posters = recommend(select_movie)
+
+            st.markdown('<div class="movie-container">', unsafe_allow_html=True)
+            for name, poster in zip(names, posters):
+                st.markdown(
+                    """
+                    <div class="movie-card">
+                        <img src="{}" width="150">
+                        <p class="movie-title">{}</p>
+                    </div>
+                    """.format(poster, name),
+                    unsafe_allow_html=True
+                )
+            st.markdown('</div>', unsafe_allow_html=True)
+
+if selected == "about":
+    st.title("CinemaGuide - Movie Recommendation System")
+    st.write(
+        " A movie recommendation system, or a movie recommender system, is an ML-based approach to filtering or predicting the user's film preferences based on their past choices and behavior.")
+
+if selected == "Contact":
+    st.title("Helpline Details")
+
+    import streamlit as st  # pip install streamlit
+
+    st.header(":mailbox: Get In Touch With Me!")
+
+    contact_form = """
+    <form action="https://formsubmit.co/svalaval@gitam.in" method="POST">
+         <input type="hidden" name="_captcha" value="false">
+         <input type="text" name="name" placeholder="Your name" required>
+         <input type="email" name="email" placeholder="Your email" required>
+         <textarea name="Suggestion" placeholder="Your suggestion here"></textarea>
+         <button type="submit">Send</button>
+    </form>
+    """
+
+    st.markdown(contact_form, unsafe_allow_html=True)
 
 
+    def local_css(file_name):
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
+    local_css("style/style.css")
