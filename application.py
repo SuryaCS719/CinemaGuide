@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
-from imdb import IMDb
+from imdb
 
 
 def fetch_poster(movie_id):
