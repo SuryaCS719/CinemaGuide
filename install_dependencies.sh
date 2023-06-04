@@ -1,1 +1,1 @@
-pip install IMDbPY
+pip install IMDbPY==2021.4.18
