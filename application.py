@@ -61,55 +61,66 @@ add_bg_from_url()
 
 from streamlit_option_menu import option_menu
 
-with st.sidebar:
-    selected = option_menu(
-        menu_title=None,
-        options=["Home", "about", "Contact"],
-        icons=["house", "book", "envelope"],
-        menu_icon="cast",
-        default_index=0,
+# col1, col2, col3 = st.columns(3)
+# selected = col1.radio("Menu", ["Home", "About", "Contact"])
 
-        styles={
-            "container": {"padding": "0!important"},
-            "icon": {"color": "orange", "font-size": "25px"},
-            "nav-link": {
-                "font-size": "25px",
-                "text-align": "left",
-                "margin": "0px",
-                "--hover-color": "#eee",
-            },
-            "nav-link-selected": {"background-color": "green"},
-        },
-    )
+# Custom CSS to hide the sidebar by default
+st.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        margin-left: -16rem;
+        transition: margin-left 0.3s;
+    }
+    .sidebar.--collapsed .sidebar-content {
+        margin-left: 0;
+    }
+    .reportview-container .main .block-container {
+        max-width: 100%;
+        padding-top: 0rem;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Hide the sidebar by default
+st.markdown('<style>div.Widget.row-widget.stRadio > div{visibility:hidden}</style>', unsafe_allow_html=True)
+
+# Menu options as separate tabs
+selected = st.sidebar.radio("Menu", ["Home", "About", "Contact"])
+
 
 if selected == "Home":
+    # Code for Home page
     page_bg_img = """
-    <style>
+        <style>
 
 
 
+        .title {
+            color: #ADD8E6;
+            font-size: 118px;
+            text-align: center;
+            margin-bottom: 50px;
 
+        }
 
-    .title {
-        color: #ADD8E6;
-        font-size: 118px;
-        text-align: center;
-        margin-bottom: 50px;
+        .header {
+            margin-bottom: 50em;
+            color: #CCCCFF;
+            # color: #6495ED;
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: -15em;
+        }
 
-    }
-
-    .header {
-        margin-bottom: 50em;
-        color: #CCCCFF;
-        # color: #6495ED;
-        font-weight: bold;
-        font-size: 25px;
-        text-align: center;
-        margin-bottom: -15em;
-    }
-
-    </style>
-    """
+        </style>
+        """
 
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
@@ -124,21 +135,21 @@ if selected == "Home":
     select_movie = st.selectbox('', movies_['title'].values)
 
     button_style = '''
-        <style>
-        .stButton button {
-            background-color: #800000;
-            color: #F5F5DC;
-            text-align: center;
-            display: block;
-            margin: 0 auto;
-            padding: 10px 25px;
-            border-radius: 5px;
-            cursor: default;
-            font-weight: bold;
-            font-style: italic;
-        }
-        </style>
-    '''
+            <style>
+            .stButton button {
+                background-color: #800000;
+                color: #F5F5DC;
+                text-align: center;
+                display: block;
+                margin: 0 auto;
+                padding: 10px 25px;
+                border-radius: 5px;
+                cursor: default;
+                font-weight: bold;
+                font-style: italic;
+            }
+            </style>
+        '''
 
     st.markdown(button_style, unsafe_allow_html=True)
 
@@ -187,12 +198,18 @@ if selected == "Home":
                 )
             st.markdown('</div>', unsafe_allow_html=True)
 
-if selected == "about":
+
+elif selected == "About":
+    # Code for About page
     st.title("CinemaGuide - Movie Recommendation System")
     st.write(
         " A movie recommendation system, or a movie recommender system, is an ML-based approach to filtering or predicting the user's film preferences based on their past choices and behavior.")
 
-if selected == "Contact":
+
+
+elif selected == "Contact":
+    # Code for Contact page
+
     st.title("Helpline Details")
 
     import streamlit as st  # pip install streamlit
@@ -200,14 +217,14 @@ if selected == "Contact":
     st.header(":mailbox: Get In Touch With Me!")
 
     contact_form = """
-    <form action="https://formsubmit.co/svalaval@gitam.in" method="POST">
-         <input type="hidden" name="_captcha" value="false">
-         <input type="text" name="name" placeholder="Your name" required>
-         <input type="email" name="email" placeholder="Your email" required>
-         <textarea name="Suggestion" placeholder="Your suggestion here"></textarea>
-         <button type="submit">Send</button>
-    </form>
-    """
+        <form action="https://formsubmit.co/svalaval@gitam.in" method="POST">
+             <input type="hidden" name="_captcha" value="false">
+             <input type="text" name="name" placeholder="Your name" required>
+             <input type="email" name="email" placeholder="Your email" required>
+             <textarea name="Suggestion" placeholder="Your suggestion here"></textarea>
+             <button type="submit">Send</button>
+        </form>
+        """
 
     st.markdown(contact_form, unsafe_allow_html=True)
 
@@ -218,3 +235,9 @@ if selected == "Contact":
 
 
     local_css("style/style.css")
+
+
+
+
+
+
