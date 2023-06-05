@@ -42,7 +42,7 @@ https://github.com/SuryaCS719/CinemaGuide.git
 ### Contributing
 + Surya (Project Lead, Phoenix Global)
 + Sai Kiran (Team Member, Phoenix Global)
-+ Project supervision by Mr. Umesh (Mentor, Phoenix Global)
++ Project guidance provided by Mr. Umesh (Mentor, Phoenix Global)
 
 Note: At this moment, there are no other contributions.
 
