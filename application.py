@@ -236,25 +236,65 @@ if selected == "Home":
             st.markdown('</div>', unsafe_allow_html=True)
 
 
+# elif selected == "About":
+#     # Code for About page
+#     st.title("Welcome to CinemaGuide!")
+#     st.markdown("""
+#             CinemaGuide is a powerful movie recommendation system designed to enhance your movie-watching experience. We understand that finding the perfect movie to watch can be overwhelming, with countless options available. That's where CinemaGuide comes in. Our intelligent recommendation algorithm analyzes your preferences and provides personalized movie suggestions tailored just for you.
+#
+#             Key Features:
+#
+#             1. Personalized Recommendations:
+#                CinemaGuide takes into account your movie preferences, including genres, actors, directors, and past viewing history, to generate highly personalized recommendations. Say goodbye to endlessly scrolling through movie lists!
+#
+#             2. Rich Movie Information:
+#                Discover detailed information about movies, including plot summaries, cast and crew details, ratings, and reviews. Make informed decisions and explore the world of cinema like never before.
+#
+#             3. Similar Movie Suggestions:
+#                Found a movie you loved? CinemaGuide suggests similar movies that you might enjoy based on your preferences. Expand your movie repertoire and explore new genres.
+#
+#             4. User-Friendly Interface:
+#                We've designed CinemaGuide to be user-friendly and intuitive. With a clean and easy-to-navigate interface, finding your next movie has never been easier.
+#         """)
+
 elif selected == "About":
     # Code for About page
-    st.title("CinemaGuide - Movie Recommendation System")
-    st.write(
-        " A movie recommendation system, or a movie recommender system, is an ML-based approach to filtering or predicting the user's film preferences based on their past choices and behavior.")
-
+    st.title("Welcome to CinemaGuide!")
+    st.markdown("""
+        <span style="color: #DDDDDD;"><b>CinemaGuide is a powerful movie recommendation system designed to enhance your film selection process. We understand that finding the perfect movie to watch can be overwhelming, with countless options available. That's where CinemaGuide comes in. Our intelligent recommendation algorithm analyzes your preferences and provides personalized movie suggestions tailored just for you.</b>
+        </span>
+        <br>
+        <b><h6> With CinemaGuide, you can expect: </h6></b>
+        <span style="color: #F5F5DC;"><b>1. <u>Personalized Recommendations</u>:</b></span> CinemaGuide takes into account your movie preferences, including genres, actors, directors, and past viewing history, to generate highly personalized recommendations. Say goodbye to endlessly scrolling through movie lists!
+        <br><br>
+        <span style="color: #F5F5DC;"><b>2. <u>Rich Movie Information</u>:</b></span> Discover detailed information about movies, including plot summaries, cast and crew details, ratings, and reviews. Make informed decisions and explore the world of cinema like never before.
+        <br><br>
+        <span style="color: #F5F5DC;"><b>3. <u>Similar Movie Suggestions</u>:</b></span> Found a movie you loved? CinemaGuide suggests similar movies that you might enjoy based on your preferences. Expand your movie repertoire and explore new genres.
+        <br><br>
+        <span style="color: #F5F5DC;"><b>4. <u>User-Friendly Interface</u>:</b></span> We've designed CinemaGuide to be user-friendly and intuitive. With a clean and easy-to-navigate interface, finding your next movie has never been easier.
+        <br><br>
+        <h10> Let us help you discover the perfect movies that match your tastes and preferences. </h10>
+        """, unsafe_allow_html=True)
 
 
 elif selected == "Contact":
     # Code for Contact page
 
-    st.title("Helpline Details")
+    st.subheader("Contact Us")
 
-    import streamlit as st  # pip install streamlit
+    # import streamlit as st  # pip install streamlit
 
-    st.header(":mailbox: Get In Touch With Me!")
+    # st.header(":mailbox: Get In Touch With Me!")
+
+    st.write("For any inquiries or feedback, please don't hesitate to reach out to us using the contact information provided.")
+    # st.subheader("Reach out to us:")
+    # st.write("- Email: contact@cinemaguide.com")
+    st.write(":mailbox: team.cinemaguide@gmail.com")
+    st.write("Have questions, feedback, or suggestions? We'd love to hear from you!")
+
 
     contact_form = """
-        <form action="https://formsubmit.co/svalaval@gitam.in" method="POST">
+        <form action="https://formsubmit.co/team.cinemaguide@gmail.com" method="POST">
              <input type="hidden" name="_captcha" value="false">
              <input type="text" name="name" placeholder="Your name" required>
              <input type="email" name="email" placeholder="Your email" required>
