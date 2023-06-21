@@ -79,7 +79,7 @@ def add_bg_from_url():
 
 add_bg_from_url()
 
-from streamlit_option_menu import option_menu
+# from streamlit_option_menu import option_menu
 
 # col1, col2, col3 = st.columns(3)
 # selected = col1.radio("Menu", ["Home", "About", "Contact"])
