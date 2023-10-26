@@ -52,7 +52,7 @@ def get_imdb_info(movie_name):
 movie_dict = pickle.load(open('movie_dict.pkl', 'rb'))
 movies_ = pd.DataFrame(movie_dict)
 
-# similarity = pickle.load(open('similarity.pkl', 'rb'))
+# similarity= pickle.load(open('similarity.pkl', 'rb'))
 import bz2
 import _pickle as cPickle
 
