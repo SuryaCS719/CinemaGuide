@@ -40,9 +40,10 @@ https://github.com/SuryaCS719/CinemaGuide.git
 + User-friendly interface with a selection box and button.
 
 ### Contributing
-+ Surya (Project Lead, Phoenix Global)
-+ Sai Kiran (Team Member, Phoenix Global)
-+ Project guidance provided by Mr. Umesh (Mentor, Phoenix Global)
++ V. Suryakiran (Project Lead)
++ P. Archishma (Team Member)
++ K. Srikar (Team Member)
++ Project guidance provided by Dr. U. Srinivasarao (Guide)
 
 Note: At this moment, there are no other contributions.
 
