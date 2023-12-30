@@ -39,11 +39,6 @@ https://github.com/SuryaCS719/CinemaGuide.git
 + Displays movie posters and titles of recommended movies.
 + User-friendly interface with a selection box and button.
 
-### Contributing
-+ V. Suryakiran (Project Lead)
-+ P. Archishma (Team Member)
-+ K. Srikar (Team Member)
-+ Project guidance provided by Dr. U. Srinivasarao (Guide)
 
 Note: At this moment, there are no other contributions.
 
