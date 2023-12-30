@@ -40,10 +40,6 @@ https://github.com/SuryaCS719/CinemaGuide.git
 + User-friendly interface with a selection box and button.
 
 
-Note: At this moment, there are no other contributions.
-
-Thank you to all team members and our mentor for their valuable contributions and guidance.
-
 ### License
 This project is open source and available to the public. You are free to use and distribute this project, but modification of the original source code in this repository is not allowed.
 
