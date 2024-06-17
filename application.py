@@ -67,7 +67,7 @@ def add_bg_from_url():
         f"""
          <style>
          .stApp {{
-             background-image: url("https://drive.google.com/uc?id=1f0EfMNxWi7yoZEGsKEcWn4JZTdo131mc");
+             background-image: url("https://github.com/SuryaCS719/CinemaGuide/blob/master/cinemaguide%20bg.png?raw=true");
              background-size: cover;
              color: white;
          }}
