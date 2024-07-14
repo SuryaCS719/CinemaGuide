@@ -1,17 +1,15 @@
-# CinemaGuide
+# CinemaGuide - Movie Recommendation System
 
-CinemaGuide is a movie recommendation system using machine learning.
+CinemaGuide is a movie recommendation system utilizing Python and machine learning techniques, specifically content-based filtering, to suggest movies based on user preferences.
 
 ## Description
 
-This project utilizes Python and machine learning techniques to recommend movies based on user preferences. It uses content-based filtering to suggest similar movies based on a selected movie.
+This project uses Python and machine learning algorithms to recommend movies based on user preferences. It employs content-based filtering to suggest similar movies based on a selected movie.
 
 ## Deployment
 
 The project has been deployed using Streamlit and is accessible at the following link:
-
 [CinemaGuide - Movie Recommendation System](https://cinemaguide-suryacs719.streamlit.app/)
-
 
 Please visit the provided link to explore the working of the project's application.
 
@@ -22,11 +20,13 @@ https://github.com/SuryaCS719/CinemaGuide.git
 
 2. Install the required dependencies:
 `pip install -r requirements.txt`
-3. Make sure you have the following libraries installed:
+
+4. Make sure you have the following libraries installed:
     + Streamlit
     + Pandas
     + Requests
-4. Run the application:
+      
+5. Run the application:
 `streamlit run application.py`
 
 ### Usage
@@ -38,13 +38,4 @@ https://github.com/SuryaCS719/CinemaGuide.git
 + Movie recommendation based on selected movie.
 + Displays movie posters and titles of recommended movies.
 + User-friendly interface with a selection box and button.
-
-### License
-This project is open source and available to the public. You are free to use and distribute this project, but modification of the original source code in this repository is not allowed.
-
-
-
-
-
-
 
