@@ -144,7 +144,7 @@ if selected == "Home":
 
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-    st.markdown('<p class="title" style="font-weight: bold;">CinemaGuide</p>', unsafe_allow_html=True)
+    st.markdown('<p class="title" style="font-weight: bold;">CinemaGuidee</p>', unsafe_allow_html=True)
 
     # st.markdown('<p class="title">CinemaGuide</p>', unsafe_allow_html=True)
 
